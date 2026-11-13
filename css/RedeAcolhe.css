@@ -1,0 +1,857 @@
+:root {
+    /* Paleta */
+    color-scheme: light;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #031926;
+    background: #f4e9cd;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    --cor-principal: #031926; /*títulos, cabeçalho e rodapé */
+    --cor-destaque: #468189; /* botões e detalhes */
+    --cor-verde-agua: #77aca4; /* foco do teclado*/
+    --cor-verde-claro: #9ebebd; /* textos e fundos mais leves/suaves */
+    --cor-creme: #f4e9cd; /*  fundo geral e texto sobre azul escuro */
+    --cor-fundo-cartao: #fffdf7; /* artões e painel */
+    --sombra-cartao: 0 8px 24px rgb(3 25 38 / 8%); /* Sombra */
+}
+
+/* bordas e preenchimentos no cálculo da largura */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px; /* wvita que a tela fique estreita demais */
+    margin: 0;
+}
+
+a {
+    color: var(--cor-principal);
+    text-underline-offset: 3.2px; /* separa o sublinhado das letras */
+}
+
+/*  aplica o estilo quando o ponteiro do mouse está sobre o link */
+a:hover {
+    color: var(--cor-destaque);
+}
+
+/*  destaca o elemento que recebeu foco, como na navegação pelo tab */
+:focus-visible {
+    outline: 3px solid var(--cor-verde-agua);
+    outline-offset: 4px;
+}
+
+header {
+    padding: 20px clamp(20px, 3vw, 48px); 
+    color: var(--cor-creme);
+    background: var(--cor-principal);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 24px;
+    align-items: center;
+}
+
+header > img[src="../imgs/logo_PCDireitos.jpg"] {
+    grid-row: span 3;   /* logo ocupa as 3 linhas */
+    width: 140px;
+    height: auto;
+    border-radius: 12px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 36px); /* Tamanho que se adapta a tela */
+    line-height: 1.2;
+}
+
+.marca-descricao {
+    /* O ponto '.' seleciona uma classe do html onde identifica a frase */
+    margin: 3.2px 0 16px;
+    color: var(--cor-verde-claro);
+}
+
+.navegacao-principal ul {
+    /* "navegacao-principal" é onde ficam os links principais e a ul seleciona
+       a lista de links que está dentro dela */
+    /*  o flex vai organizar os itens em linha e o flex-wrap vai quebrar em outra linha quando não houver espaço*/
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5.6px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navegacao-principal a,
+.navegacao-principal summary {
+    /* A vírgula combina seletores */
+    display: inline-block;
+    padding: 7.2px 1.6px;
+    color: var(--cor-creme);
+    font-weight: 600;
+    text-decoration-thickness: 1.92px;
+    cursor: pointer;
+}
+
+.navegacao-principal a:hover {
+    color: var(--cor-verde-claro);
+}
+
+.navegacao-principal a[href="galeria.html"] {
+    color: var(--cor-verde-claro);
+    text-decoration: underline;
+    text-underline-offset: 4.8px;
+}
+
+.navegacao-principal details ul {
+    
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    gap: 2.4px;
+    min-width: 208px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--cor-principal);
+    box-shadow: var(--sombra-cartao);
+}
+
+/*main*/
+main {
+    display: grid;
+    gap: 56px;
+    width: min(100%, 1152px);
+    margin: 0 auto;
+    padding: 40px 20px 64px;
+}
+
+#inicio {
+    position: relative;
+    isolation: isolate;          /* mantém os círculos decorativos dentro do hero */
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    column-gap: 32px;
+    align-content: center;
+    min-height: 460px;
+    padding: clamp(24px, 5vw, 56px);
+    overflow: hidden;
+    border: 1px solid var(--cor-verde-claro);
+    border-radius: 28px;
+    background: linear-gradient(120deg, rgb(158 190 189 / 35%), var(--cor-fundo-cartao) 70%);
+    box-shadow: var(--sombra-cartao);
+}
+ 
+/* Círculos decorativos (anel + círculo central) feitos só com CSS */
+#inicio::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: clamp(16px, 6%, 80px);
+    width: min(340px, 40%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translateY(-60%);
+    background: radial-gradient(
+        circle,
+        var(--cor-destaque) 0 29%,
+        var(--cor-fundo-cartao) 29% 36%,
+        rgb(119 172 164 / 35%) 36% 50%,
+        transparent 50.5%
+    );
+}
+ 
+#inicio > :not(aside) {
+    grid-column: 1;
+}
+ 
+/* Selo "Informação segura. Apoio de verdade." */
+#inicio > p:first-child {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 20px;
+    padding: 8px 16px;
+    border: 1px solid var(--cor-verde-claro);
+    border-radius: 999px;
+    background: var(--cor-fundo-cartao);
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: var(--sombra-cartao);
+}
+ 
+#inicio > p:first-child::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cor-destaque);
+}
+ 
+#inicio h2 {
+    margin: 0 0 16px;
+    color: var(--cor-principal);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+ 
+/* Use <span> no HTML se quiser destacar a 2ª frase com cor */
+#inicio h2 span {
+    color: var(--cor-destaque);
+}
+ 
+#inicio h2 + p {
+    max-width: 46ch;
+    margin: 0;
+    color: rgb(3 25 38 / 78%);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+ 
+/* Botões */
+#inicio nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+ 
+#inicio nav a {
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--sombra-cartao);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+ 
+#inicio nav a:first-child {
+    background: var(--cor-principal);
+    color: var(--cor-creme);
+}
+ 
+#inicio nav a:first-child:hover {
+    background: var(--cor-destaque);
+    color: var(--cor-creme);
+    transform: translateY(-2px);
+}
+ 
+#inicio nav a:last-child {
+    border: 1px solid var(--cor-verde-agua);
+    background: var(--cor-fundo-cartao);
+    color: var(--cor-principal);
+}
+ 
+#inicio nav a:last-child:hover {
+    background: var(--cor-verde-claro);
+    color: var(--cor-principal);
+    transform: translateY(-2px);
+}
+ 
+/* Card "Serviços verificados" */
+#inicio aside {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: end;
+    justify-self: start;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 14px;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 20px;
+    background: var(--cor-fundo-cartao);
+    box-shadow: 0 12px 32px rgb(3 25 38 / 14%);
+}
+ 
+#inicio aside::before {
+    content: "✓";
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgb(119 172 164 / 30%);
+    color: var(--cor-principal);
+    font-weight: 700;
+}
+ 
+#inicio aside strong {
+    color: var(--cor-principal);
+}
+ 
+#inicio aside p {
+    margin: 0;
+    color: rgb(3 25 38 / 70%);
+    font-size: 0.9rem;
+}
+
+#essenciais {
+    padding: clamp(20px, 4vw, 36px);
+    border-radius: 20px;
+    color: var(--cor-creme);
+    background: var(--cor-principal);
+    box-shadow: var(--sombra-cartao);
+}
+ 
+#essenciais > p:first-child {
+    margin: 0 0 4px;
+    color: var(--cor-verde-agua);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+ 
+#essenciais h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.2;
+}
+ 
+#essenciais h2 + p {
+    margin: 4px 0 20px;
+    color: var(--cor-verde-claro);
+}
+ 
+#essenciais ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ 
+#essenciais li a {
+    display: block;
+    height: 100%;
+    padding: 16px 20px;
+    border: 1px solid rgb(244 233 205 / 22%);
+    border-radius: 16px;
+    background: rgb(255 255 255 / 6%);
+    color: var(--cor-creme);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+ 
+#essenciais li a:hover {
+    background: rgb(255 255 255 / 14%);
+    color: var(--cor-creme);
+    transform: translateY(-2px);
+}
+ 
+#essenciais li a small {
+    color: var(--cor-verde-claro);
+    font-size: 0.85rem;
+}
+ 
+#essenciais li a strong {
+    display: inline-block;
+    margin: 2px 0;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+ 
+/* ---------- Diretório de apoio ---------- */
+#diretorio {
+    text-align: center;
+}
+ 
+#diretorio > p:first-child {
+    margin: 0 0 4px;
+    color: var(--cor-destaque);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+ 
+#diretorio h2 {
+    margin: 0;
+    color: var(--cor-principal);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.2;
+}
+ 
+#diretorio h2 + p {
+    max-width: 60ch;
+    margin: 12px auto 28px;
+}
+ 
+/* Filtros */
+#diretorio [role="group"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+ 
+#diretorio [role="group"] button {
+    padding: 10px 20px;
+    border: 1px solid var(--cor-verde-agua);
+    border-radius: 999px;
+    background: var(--cor-fundo-cartao);
+    color: var(--cor-principal);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+ 
+#diretorio [role="group"] button:hover {
+    background: var(--cor-verde-claro);
+}
+ 
+/* Botão ativo: use a classe .ativo ou aria-pressed="true" no JS */
+#diretorio [role="group"] button.ativo,
+#diretorio [role="group"] button[aria-pressed="true"] {
+    border-color: var(--cor-principal);
+    background: var(--cor-principal);
+    color: var(--cor-creme);
+}
+ 
+/* Grade de cards */
+#diretorio > div:last-of-type {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 24px;
+    text-align: left;
+}
+ 
+/* Card */
+#diretorio article {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid var(--cor-verde-claro);
+    border-radius: 20px;
+    background: var(--cor-fundo-cartao);
+    box-shadow: var(--sombra-cartao);
+}
+ 
+/* Filtrado pelo JS: article.hidden = true */
+#diretorio article[hidden] {
+    display: none;
+}
+ 
+/* Etiqueta de tipo (ONG, PÚBLICO...) */
+#diretorio article > p:first-child {
+    align-self: flex-start;
+    margin: 0 0 16px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgb(119 172 164 / 25%);
+    color: var(--cor-principal);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+ 
+#diretorio article h3 {
+    margin: 0 0 8px;
+    color: var(--cor-principal);
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+ 
+#diretorio article h3 + p {
+    margin: 0;
+}
+ 
+#diretorio article hr {
+    width: 100%;
+    margin: 20px 0 16px;
+    border: 0;
+    border-top: 1px solid var(--cor-verde-claro);
+}
+ 
+#diretorio article ul {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+}
+ 
+#diretorio article ul a {
+    font-weight: 700;
+}
+ 
+/* Botão "Acessar canal" sempre no fim do card */
+#diretorio article > a:last-child {
+    margin-top: auto;
+    padding: 12px 16px;
+    border: 1px solid var(--cor-destaque);
+    border-radius: 12px;
+    color: var(--cor-principal);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+ 
+#diretorio article > a:last-child:hover {
+    background: var(--cor-principal);
+    color: var(--cor-creme);
+}
+
+#indicar {
+    --cor-amarelo: #f4c96b;
+ 
+    position: relative;
+    isolation: isolate;
+    padding: clamp(28px, 6vw, 64px) clamp(24px, 6vw, 70px);
+    overflow: hidden;
+    border-radius: 28px;
+    color: var(--cor-creme);
+    background: color-mix(in srgb, var(--cor-principal) 70%, var(--cor-destaque));
+    box-shadow: var(--sombra-cartao);
+}
+ 
+/* Círculo grande decorativo (canto superior direito) */
+#indicar::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -90px;
+    right: 60px;
+    width: 300px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgb(244 233 205 / 14%);
+}
+ 
+/* Anel decorativo (canto inferior direito) */
+#indicar::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 40px;
+    bottom: -50px;
+    width: 160px;
+    aspect-ratio: 1;
+    border: 22px solid rgb(244 233 205 / 10%);
+    border-radius: 50%;
+}
+ 
+#indicar > p:first-child {
+    margin: 0 0 8px;
+    color: var(--cor-verde-agua);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+ 
+#indicar h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+}
+ 
+#indicar h2 + p {
+    max-width: 56ch;
+    margin: 0 0 28px;
+    color: var(--cor-verde-claro);
+    font-size: 1.1rem;
+}
+ 
+#indicar a {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 14px;
+    background: var(--cor-amarelo);
+    color: var(--cor-principal);
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+}
+ 
+#indicar a:hover {
+    background: var(--cor-creme);
+    color: var(--cor-principal);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 680px) {
+    main {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    main > section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+
+    main > section:nth-of-type(2) figure,
+    main > section:nth-of-type(2) figure img {
+        min-height: 280px;
+    }
+
+    main > section:nth-of-type(4) {
+        grid-template-columns: 1fr;
+    }
+
+    main > section:nth-of-type(4) > p:first-child,
+    main > section:nth-of-type(4) > h2 {
+        grid-column: auto;
+    }
+
+    main > section:nth-of-type(4) > h2 {
+        margin-top: -16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+body > footer {
+    /* auto-fit adapta a quantidade à largura */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 288px), 1fr));
+    gap: 32px;
+    padding: 32px max(20px, calc((100% - 1152px) / 2));
+    color: var(--cor-creme);
+    background: var(--cor-principal);
+}
+
+body > footer h3 {
+    color: var(--cor-creme);
+}
+
+body > footer a {
+    color: var(--cor-verde-claro);
+}
+
+body > footer a:hover {
+    color: var(--cor-creme);
+}
+
+body > footer ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(144px, 1fr));
+    gap: 5.6px 16px;
+    padding-left: 20px;
+}
+
+body > footer {
+    /* auto-fit adapta a quantidade à largura2 */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 288px), 1fr));
+    gap: 32px;
+    padding: 32px max(20px, calc((100% - 1152px) / 2));
+    color: var(--cor-creme);
+    background: var(--cor-principal);
+}
+
+body > footer h3 {
+    color: var(--cor-creme);
+}
+
+body > footer a {
+    color: var(--cor-verde-claro);
+}
+
+body > footer a:hover {
+    color: var(--cor-creme);
+}
+
+body > footer ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(144px, 1fr));
+    gap: 5.6px 16px;
+    padding-left: 20px;
+}
+
+/*Parte da logo no rodapé*/
+body > footer img {
+    display: block;     /* a imagem ocupa a própria linha, ficando acima da frase */
+    width: 140px;       /* ajusta o tamanho aqui */
+    height: auto;
+    margin-bottom: 12px;
+    margin-left: -12px;   /* alinha o desenho da logo com a borda do texto */
+    border-radius: 12px;
+}
+
+body > footer p {
+    max-width: 32ch;
+    margin: 0;
+}
+
+/* botão de acessibilidade */
+#acesso {
+    position: fixed;
+    z-index: 10;
+    right: 20px;
+    bottom: 20px;
+}
+
+#abrir {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--cor-creme);
+    border-radius: 50%;
+    background: var(--cor-azul-petroleo);
+    color: var(--cor-creme);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0 5px 18px rgb(3 25 38 / 25%);
+}
+
+#painel:not([hidden]) {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 12.8px);
+    width: min(90vw, 360px);
+    max-height: min(70vh, 520px);
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid var(--cor-verde-claro);
+    border-radius: 16px;
+    background: var(--cor-branco-quente);
+    box-shadow: 0 12px 36px rgb(3 25 38 / 20%);
+}
+
+#painel[hidden] {
+    display: none;
+}
+
+#painel h2 {
+    margin: 0 0 16px;
+}
+
+#painel [role="group"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#painel [role="group"] span {
+    flex-basis: 100%;
+    font-weight: 700;
+}
+
+#painel button {
+    padding: 7.2px 10.4px;
+    border: 1px solid var(--cor-azul-petroleo);
+    border-radius: 8px;
+    background: var(--cor-creme);
+    color: var(--cor-azul-marinho);
+    cursor: pointer;
+    font: inherit;
+}
+
+#painel button:hover {
+    background: var(--cor-verde-claro);
+}
+
+#painel .a11y-reset {
+    margin-top: 16px;
+    background: var(--cor-azul-marinho);
+    color: var(--cor-creme);
+}
+
+/* A partir daqui é  modo de como funciona dentro do painel, deixando ele na lateral e permitindo que tudo funcione */
+#acesso svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* ===== Efeitos aplicados no <html> pelo JS ===== */
+html.alto-contraste body {
+    background: #000;
+    color: #fff;
+}
+html.alto-contraste header,
+html.alto-contraste footer,
+html.alto-contraste .conceito,
+html.alto-contraste .principio,
+html.alto-contraste .estatistica {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+html.alto-contraste a,
+html.alto-contraste .estatistica strong,
+html.alto-contraste .principio h3,
+html.alto-contraste .destaque-chamada {
+    color: #ffff00;
+}
+
+html.escala-cinza {
+    filter: grayscale(100%);
+}
+
+html.fonte-legivel body,
+html.fonte-legivel button {
+    font-family: Verdana, Arial, sans-serif;
+    letter-spacing: 0.03em;
+}
+
+html.destacar-links a {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    background: #ffff99;
+    color: #000;
+}
+
+html.espacamento body {
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+    word-spacing: 0.15em;
+}
+
+/* ===== Modos para daltonismo ===== */
+html.dalt-protanopia   { 
+    filter: url(#filtro-protanopia); 
+}
+html.dalt-deuteranopia { 
+    filter: url(#filtro-deuteranopia); 
+}
+html.dalt-tritanopia   { 
+    filter: url(#filtro-tritanopia); 
+}
+
+/* ===== NOVO: leitura em voz alta ===== */
+#painel .grupo-leitura {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--cor-verde-claro);
+}
+
+#painel .grupo-leitura label {
+    flex-basis: 100%;
+}
+
+#painel input[type="range"] {
+    vertical-align: middle;
+    width: 150px;
+}
+
+/* botões ligados (ex.: "Ler ao passar o mouse") ficam destacados */
+#painel button[aria-pressed="true"] {
+    background: var(--cor-azul-petroleo);
+    color: var(--cor-creme);
+}
+
+/* item que está sendo lido agora */
+.lendo-agora {
+    outline: 3px solid #ffbf00 !important;
+    outline-offset: 2px;
+    background: rgb(255 191 0 / 25%) !important;
+    scroll-margin: 120px;
+}

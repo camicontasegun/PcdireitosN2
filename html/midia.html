@@ -116,18 +116,55 @@
                 </div>
 
                 <div class="episodio-conteudo">
-                    <p class="episodio-numero">Episódio 01 · Em preparação</p>
-                    <h3>Acessibilidade começa na escuta</h3>
-                    <p>Uma introdução sobre como ouvir pessoas com deficiência transforma espaços, serviços e relações.</p>
+                    <p class="episodio-numero">Episódio 01</p>
+                    <h3>Além de estar presente: o direito de participar</h3>
+                    <p>Neste episódio, exploramos os desafios enfrentados diariamente por pessoas com deficiência e o que significa 
+                        incluí-las nos ambientes sociais de forma justa e independente. Mais do que um dever do poder público, a inclusão 
+                        é uma responsabilidade coletiva para garantir autonomia e participação real a todos.</p>
 
-                    <div class="audio-indisponivel" role="status">
-                        <span aria-hidden="true">♪</span>
-                        <p>O áudio deste episódio estará disponível em breve.</p>
+                    <audio id="player" controls preload="metadata" aria-label="Episódio 01: Além de estar presente, o direito de participar">
+                        <source src="../áudio/podcast.mp3" type="audio/mpeg">
+                        Seu navegador não suporta o player de áudio.
+                    </audio>
+
+                    <div class="audio-controles">
+                        <button type="button" id="voltar" aria-label="Voltar 15 segundos">⏪ 15s</button>
+                        <button type="button" id="avancar" aria-label="Avançar 15 segundos">15s ⏩</button>
+
+                        <label for="velocidade-audio">Velocidade:</label>
+                        <select id="velocidade-audio">
+                            <option value="0.75">0,75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1,25x</option>
+                            <option value="1.5">1,5x</option>
+                            <option value="2">2x</option>
+                        </select>
                     </div>
 
                     <details>
-                        <summary>Sobre este episódio</summary>
-                        <p>Uma conversa introdutória sobre escuta ativa, autonomia e a importância de incluir pessoas com deficiência nas decisões que afetam suas vidas.</p>
+                        <summary>Ler transcrição do episódio</summary>
+                        <p>Olá, pessoal! Hoje vamos falar sobre a inclusão das Pessoas com Deficiência (PCD) nos ambientes sociais. Esse 
+                            é um assunto muito importante, pois todos devem ter o direito de participar da sociedade com respeito, 
+                            igualdade e dignidade, independentemente de suas limitações físicas, sensoriais ou intelectuais.<br><br>
+
+                            As pessoas com deficiência enfrentam diversos desafios no dia a dia, principalmente em lugares como escolas, 
+                            empresas, transportes públicos, restaurantes e espaços de lazer. Entre as principais dificuldades estão a 
+                            falta de rampas, elevadores, pisos táteis, intérpretes de Libras e até mesmo o preconceito e a falta de 
+                            compreensão das pessoas.<br>
+                            A inclusão não significa apenas permitir que uma pessoa com deficiência esteja presente em determinado ambiente, 
+                            mas garantir que ela consiga participar das atividades de forma independente e com as mesmas oportunidades que 
+                            as outras pessoas. Além disso, é importante lembrar que a responsabilidade pela inclusão não é apenas do governo, mas também de toda 
+                            a sociedade. Pequenas atitudes, como respeitar as diferenças, evitar julgamentos e oferecer ajuda quando 
+                            necessário, fazem a diferença.<br><br>
+
+                            Portanto, construir ambientes sociais inclusivos é essencial para uma sociedade mais justa e igualitária. Precisamos 
+                            entender que a deficiência não deve ser motivo de exclusão. O que realmente impede a participação de muitas pessoas
+                            são as barreiras físicas, sociais e o preconceito.
+                            Assim, devemos trabalhar para que todos tenham voz, espaço e oportunidades, respeitando suas necessidades e 
+                            diferenças. Para finalizar, deixamos uma reflexão: inclusão não é apenas colocar todos no mesmo lugar, mas 
+                            garantir que todos possam participar de verdade.<br><br>
+
+                            Obrigado pela atenção!</p>
                     </details>
                 </div>
             </article>
@@ -229,6 +266,7 @@
         </section>
     </footer>
     
+    <script src="../js/audio.js"></script>
     <script src="../js/painel.js"></script>
 </body>
 </html>

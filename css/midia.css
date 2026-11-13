@@ -299,6 +299,71 @@ main > section:nth-of-type(4) article p {
     margin: 0;
 }
 
+.episodio-conteudo audio {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.episodio-conteudo audio {
+    width: 100%;
+    margin: 1rem 0 0.75rem;
+}
+
+.audio-controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+
+.audio-controles button {
+    padding: 0.55rem 1rem;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--cor-destaque);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.audio-controles button:hover {
+    background: var(--cor-destaque);
+    color: var(--cor-creme);
+}
+
+.audio-controles button:active {
+    background: var(--cor-principal);
+    border-color: var(--cor-principal);
+    color: var(--cor-creme);
+}
+
+.audio-controles label {
+    margin-left: auto;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.audio-controles select {
+    padding: 0.5rem 0.8rem;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 999px;
+    background: var(--cor-fundo-cartao);
+    color: var(--cor-principal);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.audio-controles select:hover {
+    background: rgb(158 190 189 / 25%);
+}
+
 .podcast {
     overflow: hidden;
     background:

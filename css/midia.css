@@ -19,7 +19,7 @@
     --cor-branco-quente: var(--cor-fundo-cartao);
 }
 
- {
+* {
     box-sizing: border-box;
 }
 

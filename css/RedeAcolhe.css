@@ -855,3 +855,253 @@ html.dalt-tritanopia   {
     background: rgb(255 191 0 / 25%) !important;
     scroll-margin: 120px;
 }
+
+/*  Tablets e telas médias (até 900px) */
+@media (max-width: 900px) {
+    main {
+        gap: 40px;
+        padding: 32px 20px 48px;
+    }
+
+    /* Hero vira uma coluna só */
+    #inicio {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    #inicio > :not(aside) {
+        grid-column: 1;
+    }
+
+    /* Card "Serviços verificados" passa para baixo do texto */
+    #inicio aside {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 28px;
+    }
+
+    /* Círculo decorativo menor e mais discreto */
+    #inicio::before {
+        top: 24px;
+        right: 16px;
+        width: min(220px, 45%);
+        transform: none;
+        opacity: 0.6;
+    }
+
+    #inicio h2 + p {
+        max-width: 100%;
+    }
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+
+    /* Cabeçalho: logo em cima, textos centralizados */
+    header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        row-gap: 4px;
+        padding: 16px;
+    }
+
+    header > img[src="../imgs/logo_PCDireitos.jpg"] {
+        grid-row: auto;
+        width: 100px;
+        margin-bottom: 8px;
+    }
+
+    .marca-descricao {
+        margin: 4px 0 12px;
+    }
+
+    /* Menu: itens centralizados, com área de toque confortável */
+    .navegacao-principal ul {
+        justify-content: center;
+        gap: 4px 16px;
+    }
+
+    .navegacao-principal a,
+    .navegacao-principal summary {
+        padding: 10px 6px;
+    }
+
+    /* Submenu entra no fluxo da página, sem sair da tela */
+    .navegacao-principal details ul {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    /* Conteúdo principal */
+    main {
+        gap: 32px;
+        padding: 24px 16px 40px;
+    }
+
+    /* Hero */
+    #inicio {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+
+    #inicio::before {
+        width: 140px;
+        top: 12px;
+        right: 8px;
+        opacity: 0.45;
+    }
+
+    #inicio > p:first-child {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    #inicio h2 {
+        font-size: clamp(2rem, 9vw, 2.6rem);
+    }
+
+    /* Botões do hero ocupam a largura toda */
+    #inicio nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #inicio nav a {
+        text-align: center;
+        padding: 14px 20px;
+    }
+
+    #inicio aside {
+        width: 100%;
+        padding: 14px 18px;
+    }
+
+    /* Essenciais */
+    #essenciais {
+        border-radius: 16px;
+    }
+
+    #essenciais ul {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    #essenciais li a strong {
+        font-size: 1.25rem;
+    }
+
+    /* Diretório */
+    #diretorio h2 + p {
+        margin-bottom: 20px;
+    }
+
+    #diretorio [role="group"] {
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    #diretorio [role="group"] button {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    #diretorio > div:last-of-type {
+        gap: 16px;
+    }
+
+    #diretorio article {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    #diretorio article > a:last-child {
+        padding: 14px 16px;
+    }
+
+    /* Indicar */
+    #indicar {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    #indicar::before {
+        width: 200px;
+        top: -70px;
+        right: -40px;
+    }
+
+    #indicar::after {
+        width: 110px;
+        right: -20px;
+        bottom: -35px;
+        border-width: 16px;
+    }
+
+    #indicar h2 + p {
+        font-size: 1rem;
+    }
+
+    #indicar a {
+        display: block;
+        text-align: center;
+    }
+
+    /* Rodapé */
+    body > footer {
+        gap: 24px;
+        padding: 28px 16px 88px; /* espaço extra embaixo para o botão de acessibilidade */
+    }
+
+    body > footer ul {
+        grid-template-columns: 1fr 1fr;
+        padding-left: 16px;
+    }
+
+    body > footer p {
+        max-width: 100%;
+    }
+
+    /* Botão e painel de acessibilidade */
+    #acesso {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    #abrir {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    #painel:not([hidden]) {
+        width: calc(100vw - 24px);
+        max-height: 65vh;
+        padding: 16px;
+    }
+
+    #painel button {
+        padding: 10px 12px; /* alvo de toque maior */
+    }
+
+    #painel input[type="range"] {
+        width: 100%;
+    }
+}
+
+/* Celulares bem pequenos (até 380px)  */
+@media (max-width: 380px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    #inicio h2 {
+        font-size: 1.9rem;
+    }
+
+    body > footer ul {
+        grid-template-columns: 1fr;
+    }
+}

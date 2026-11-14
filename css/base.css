@@ -1,0 +1,44 @@
+/* BASE.CSS - SÓ NAVEGAÇÃO POR TECLADO
+   O painel de acessibilidade continua no CSS de cada página.*/
+
+/* "html body" deixa estas regras mais fortes que os antigos
+   a:focus-visible / button:focus-visible das páginas, então
+   funciona mesmo antes de você apagar os blocos antigos. */
+
+/* Foco padrão: escuro, para fundos claros */
+html body :focus-visible {
+    outline: 3px solid var(--cor-azul-marinho, var(--cor-principal, #031926));
+    outline-offset: 3px;
+}
+
+/* Fundos escuros: contorno claro */
+html body header :focus-visible,
+html body footer :focus-visible,
+html body #abrir:focus-visible {
+    outline-color: var(--cor-creme, #f4e9cd);
+}
+
+/* Alto contraste */
+html.alto-contraste body :focus-visible {
+    outline-color: #ffff00;
+}
+
+/* Link "Pular para o conteúdo" */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: #fff;
+    color: #000;
+    padding: .5rem 1rem;
+    z-index: 1000;
+}
+
+html body main:focus-visible {
+    outline: none;
+}

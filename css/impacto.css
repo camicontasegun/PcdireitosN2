@@ -997,228 +997,39 @@ html.dalt-tritanopia   {
     scroll-margin: 120px;
 }
 
-@media (max-width: 900px) {
-    /* mapa em cima, cards embaixo */
-    main #locais {
-        grid-template-columns: 1fr;
-    }
-
-    main aside {
-        position: static;
-        height: auto;
-        min-height: 0;
-    }
-
-    main #mapa {
-        flex: none;
-        height: 360px;
-        min-height: 0;
-    }
-
-    main #beneficios ol {
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-}
-
-/*  Celulares (até 700px)  */
-@media (max-width: 700px) {
-
-    /* Cabeçalho do site (body > header para não afetar os headers internos) */
-    body > header {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        text-align: center;
-        row-gap: 4px;
-        padding: 16px;
-    }
-
-    body > header > img[src="../imgs/logo_PCDireitos.jpg"] {
-        grid-row: auto;
-        width: 100px;
-        margin-bottom: 8px;
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 24px;
     }
 
     .navegacao-principal ul {
-        justify-content: center;
-        gap: 4px 16px;
+        gap: 2.4px 8px;
     }
 
     .navegacao-principal a,
     .navegacao-principal summary {
-        padding: 10px 6px;
+        padding: 8px 8.8px;
+        font-size: 13.6px;
     }
 
-    .navegacao-principal details ul {
-        position: static;
-        min-width: 0;
-        width: 100%;
-        margin-top: 4px;
-    }
-
-    /* Hero */
-    main > section:first-of-type {
-        padding-top: 56px;
-        padding-bottom: 56px;
-    }
-
-    main > section:first-of-type h1 {
-        max-width: none;
-        font-size: clamp(34px, 10vw, 46px);
-        margin-bottom: 20px;
-    }
-
-    main > section:first-of-type > ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        margin-top: 28px;
-        font-size: 15px;
-    }
-
-    /* Filtros */
-    main > nav ul {
-        padding-block: 12px;
-        gap: 8px;
-    }
-
-    main > nav button {
-        padding: 10px 18px;
-        font-size: 15px;
-    }
-
-    /* Cabeçalho da seção de locais */
-    main #locais {
-        padding-block: 40px;
-        gap: 20px;
-    }
-
-    main #locais > header {
-        grid-template-columns: 1fr;
-    }
-
-    main #locais > header h2 {
-        max-width: none;
-        font-size: clamp(30px, 9vw, 40px);
-    }
-
-    main #locais > header > p:last-child {
-        grid-column: 1;
-        grid-row: auto;
-        margin-top: 16px;
-    }
-
-    main #locais > header > p:last-child strong {
-        font-size: 36px;
-    }
-
-    /* Mapa */
-    main aside {
-        border-radius: 20px;
-    }
-
-    main aside > header {
-        padding: 16px 18px;
-    }
-
-    main #mapa {
-        height: 300px;
-    }
-
-    /* Cards: foto em cima, texto embaixo */
-    main #locais > ul {
-        gap: 20px;
-    }
-
-    main article {
-        grid-template-columns: 1fr;
-        min-height: 0;
-        border-radius: 20px;
-    }
-
-    main figure {
-        height: 200px;
-    }
-
-    main article > div {
-        padding: 20px;
-    }
-
-    main article h3 {
-        padding-right: 56px;
-        font-size: 22px;
-    }
-
-    main article > div > a {
-        top: 16px;
-        right: 16px;
-        width: 44px;
-        height: 44px;
-    }
-
-    main article ul li {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-
-    /* Benefícios */
-    main #beneficios li {
-        grid-template-columns: 48px 1fr;
-    }
-
-    /* Rodapé: espaço extra para o botão de acessibilidade */
-    footer {
-        gap: 24px;
-        padding: 28px 16px 88px;
-    }
-
-    footer ul {
-        grid-template-columns: 1fr 1fr;
-        padding-left: 16px;
-    }
-
-    footer p {
-        max-width: 100%;
-    }
-
-    /* Acessibilidade */
-    #acesso {
-        right: 12px;
-        bottom: 12px;
-    }
-
-    #abrir {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
-    }
-
-    #painel:not([hidden]) {
-        width: calc(100vw - 24px);
-        max-height: 65vh;
+    main > section:nth-of-type(n + 2) {
         padding: 16px;
     }
 
-    #painel button {
-        padding: 10px 12px;
-    }
-
-    #painel input[type="range"] {
-        width: 100%;
+    th,
+    td {
+        padding: 11.2px;
     }
 }
 
-/*  Celulares pequenos (até 380px) */
-@media (max-width: 380px) {
-    body > header h1 {
-        font-size: 1.6rem;
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 
-    main figure {
-        height: 170px;
-    }
-
-    footer ul {
-        grid-template-columns: 1fr;
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
     }
 }

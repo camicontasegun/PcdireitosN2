@@ -22,9 +22,7 @@
     try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {}
   }
 
-  /* =====================================================
-     LEITURA EM VOZ ALTA (Web Speech API)
-     ===================================================== */
+  /* LEITURA EM VOZ ALTA (Web Speech API) */
   const suportaVoz = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
   const sintese = suportaVoz ? window.speechSynthesis : null;
 
@@ -307,48 +305,85 @@
     if (sliderVel) sliderVel.value = estado.velocidade;
   }
 
-  btnAbrir.addEventListener('click', () => {
-    const aberto = painel.hidden;
-    painel.hidden = !aberto;
-    btnAbrir.setAttribute('aria-expanded', aberto);
-  });
+  function abrirPainel() {
+  painel.hidden = false;
+  btnAbrir.setAttribute('aria-expanded', 'true');
+  painel.querySelector('button').focus();
+}
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !painel.hidden) {
-      painel.hidden = true;
-      btnAbrir.setAttribute('aria-expanded', 'false');
-      btnAbrir.focus();
-    }
-  });
+function fecharPainel() {
+  painel.hidden = true;
+  btnAbrir.setAttribute('aria-expanded', 'false');
+  btnAbrir.focus();
+}
 
-  painel.addEventListener('click', e => {
-    const btn = e.target.closest('button');
-    if (!btn) return;
+btnAbrir.addEventListener('click', () => {
+  painel.hidden ? abrirPainel() : fecharPainel();
+});
 
-    if (btn.dataset.toggle) {
-      const nome = btn.dataset.toggle;
-      estado.toggles[nome] = !estado.toggles[nome];
-    }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !painel.hidden) fecharPainel();
+});
 
-    switch (btn.dataset.acao) {
-      case 'fonte-mais':
-        estado.fonte = Math.min(estado.fonte + 10, 150); break;
-      case 'fonte-menos':
-        estado.fonte = Math.max(estado.fonte - 10, 80); break;
-      case 'daltonismo':
-        estado.dalt = (estado.dalt + 1) % modosDalt.length; break;
-      case 'ler-pagina':   lerPagina(); break;
-      case 'ler-selecao':  lerSelecao(); break;
-      case 'pausar':       pausarOuContinuar(); break;
-      case 'parar':        parar(); break;
-      case 'reset':
-        parar();
-        estado = { fonte: 100, toggles: {}, dalt: 0, velocidade: 1 }; break;
-    }
+// Mantém o Tab dentro do painel enquanto estiver aberto
+painel.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const itens = painel.querySelectorAll('button, input');
+  const primeiro = itens[0];
+  const ultimo = itens[itens.length - 1];
+  if (e.shiftKey && document.activeElement === primeiro) {
+    e.preventDefault();
+    ultimo.focus();
+  } else if (!e.shiftKey && document.activeElement === ultimo) {
+    e.preventDefault();
+    primeiro.focus();
+  }
+});
+
+painel.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.toggle) {
+    const nome = btn.dataset.toggle;
+    estado.toggles[nome] = !estado.toggles[nome];
+  }
+
+  switch (btn.dataset.acao) {
+    case 'fonte-mais':
+      estado.fonte = Math.min(estado.fonte + 10, 150); break;
+    case 'fonte-menos':
+      estado.fonte = Math.max(estado.fonte - 10, 80); break;
+    case 'daltonismo':
+      estado.dalt = (estado.dalt + 1) % modosDalt.length; break;
+    case 'ler-pagina':   lerPagina(); break;
+    case 'ler-selecao':  lerSelecao(); break;
+    case 'pausar':       pausarOuContinuar(); break;
+    case 'parar':        parar(); break;
+    case 'reset':
+      parar();
+      estado = { fonte: 100, toggles: {}, dalt: 0, velocidade: 1 }; break;
+  }
 
     salvar();
     aplicar();
   });
+
+    const detalhes = document.querySelector('.navegacao-principal details');
+  if (detalhes) {
+    detalhes.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && detalhes.open) {
+        detalhes.open = false;
+        detalhes.querySelector('summary').focus();
+      }
+    });
+    detalhes.addEventListener('focusout', e => {
+      if (!detalhes.contains(e.relatedTarget)) detalhes.open = false;
+    });
+    document.addEventListener('click', e => {
+      if (!detalhes.contains(e.target)) detalhes.open = false;
+    });
+  }
 
   aplicar();
 })();

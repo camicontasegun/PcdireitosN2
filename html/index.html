@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
     <title>Home - PCDireitos</title>
 </head>
 
 <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 
     <!--Cabeçalho-->
+
     <header>
         <img src="../imgs/logo_PCDireitos.jpg" alt="Logo do PCDireitos">
-        <h1>PCDireitos</h1>
+        <h1 class="marca-nome">PCDireitos</h1>
         <p class="marca-descricao">Pessoas com direitos</p>
 
         <!--Navegação do cabeçalho-->
         <nav class="navegacao-principal" aria-label="Navegação principal">
-            <ul>  
-                <li><a href="index.html">Home</a></li>
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="sobre.html">sobre</a></li>
                 <li><a href="projetos.html">Direitos</a></li>
                 <li><a href="impacto.html">Guia</a></li>
@@ -41,10 +44,10 @@
     </header>
 
     <!--corpo do site-->
-    <main>
+    <main id="conteudo" tabindex="-1">
         <section class="destaque">
             <p class="destaque-chamada">Informação que transforma</p>
-            <h1>Toda pessoa cabe no futuro</h1>
+            <h2>Toda pessoa cabe no futuro</h2>
 
             <p>Conhecimento, respeito e ação para construir uma sociedade onde 
                 pessoas com deficiência tenham voz, autonomia e oportunidades reais.</p>

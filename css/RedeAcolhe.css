@@ -67,7 +67,7 @@ header h1 {
 
 .marca-descricao {
     /* O ponto '.' seleciona uma classe do html onde identifica a frase */
-    margin: 3.2px 0 16px;
+    margin: 0;
     color: var(--cor-verde-claro);
 }
 
@@ -98,7 +98,7 @@ header h1 {
     color: var(--cor-verde-claro);
 }
 
-.navegacao-principal a[href="galeria.html"] {
+.navegacao-principal a[href="RedeAcolhe.html"] {
     color: var(--cor-verde-claro);
     text-decoration: underline;
     text-underline-offset: 4.8px;
@@ -577,31 +577,46 @@ main {
 }
 
 @media (max-width: 680px) {
+    body {
+        min-width: 0;
+    }
+
     main {
+        gap: 32px;
+        padding-top: 24px;
+        padding-bottom: 48px;
         padding-right: 16px;
         padding-left: 16px;
     }
 
-    main > section:nth-of-type(2) {
-        grid-template-columns: 1fr;
+    #inicio {
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        min-height: 0;
+        padding: 24px;
     }
 
-    main > section:nth-of-type(2) figure,
-    main > section:nth-of-type(2) figure img {
-        min-height: 280px;
+    #inicio::before {
+        top: auto;
+        right: -24px;
+        bottom: -90px;
+        width: min(220px, 70%);
+        transform: none;
     }
 
-    main > section:nth-of-type(4) {
-        grid-template-columns: 1fr;
+    #inicio h2 {
+        font-size: clamp(2rem, 9vw, 3rem);
     }
 
-    main > section:nth-of-type(4) > p:first-child,
-    main > section:nth-of-type(4) > h2 {
-        grid-column: auto;
+    #inicio aside {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: stretch;
+        margin-top: 24px;
     }
 
-    main > section:nth-of-type(4) > h2 {
-        margin-top: -16px;
+    #essenciais ul {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
     }
 }
 
@@ -701,7 +716,7 @@ body > footer p {
     height: 56px;
     border: 2px solid var(--cor-creme);
     border-radius: 50%;
-    background: var(--cor-azul-petroleo);
+    background: var(--cor-destaque);
     color: var(--cor-creme);
     cursor: pointer;
     font-size: 20px;
@@ -719,7 +734,7 @@ body > footer p {
     padding: 20px;
     border: 1px solid var(--cor-verde-claro);
     border-radius: 16px;
-    background: var(--cor-branco-quente);
+    background: var(--cor-fundo-cartao);
     box-shadow: 0 12px 36px rgb(3 25 38 / 20%);
 }
 
@@ -744,10 +759,10 @@ body > footer p {
 
 #painel button {
     padding: 7.2px 10.4px;
-    border: 1px solid var(--cor-azul-petroleo);
+    border: 1px solid var(--cor-destaque);
     border-radius: 8px;
     background: var(--cor-creme);
-    color: var(--cor-azul-marinho);
+    color: var(--cor-principal);
     cursor: pointer;
     font: inherit;
 }
@@ -758,7 +773,7 @@ body > footer p {
 
 #painel .a11y-reset {
     margin-top: 16px;
-    background: var(--cor-azul-marinho);
+    background: var(--cor-principal);
     color: var(--cor-creme);
 }
 
@@ -844,7 +859,7 @@ html.dalt-tritanopia   {
 
 /* botões ligados (ex.: "Ler ao passar o mouse") ficam destacados */
 #painel button[aria-pressed="true"] {
-    background: var(--cor-azul-petroleo);
+    background: var(--cor-destaque);
     color: var(--cor-creme);
 }
 
@@ -854,4 +869,53 @@ html.dalt-tritanopia   {
     outline-offset: 2px;
     background: rgb(255 191 0 / 25%) !important;
     scroll-margin: 120px;
+}
+/* tela de celular */
+@media (max-width: 760px) {
+    header {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 9.6px 24px;
+    }
+
+    header > img[src="../imgs/logo_PCDireitos.jpg"] {
+        grid-row: span 2;
+        width: 80px;
+    }
+
+    .marca-descricao {
+        margin: 0;
+    }
+
+    .navegacao-principal {
+        grid-column: 1 / -1;
+    }
+
+    .navegacao-principal ul {
+        justify-content: center;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* telas de celulares menores */
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .marca-descricao {
+        font-size: 14px;
+    }
+
+    .navegacao-principal ul {
+        gap: 2.4px;
+    }
+
+    .navegacao-principal a {
+        padding: 8px 8.8px;
+        font-size: 13.6px;
+    }
 }

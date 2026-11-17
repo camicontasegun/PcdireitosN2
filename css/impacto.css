@@ -997,31 +997,6 @@ html.dalt-tritanopia   {
     scroll-margin: 120px;
 }
 
-@media (max-width: 420px) {
-    header h1 {
-        font-size: 24px;
-    }
-
-    .navegacao-principal ul {
-        gap: 2.4px 8px;
-    }
-
-    .navegacao-principal a,
-    .navegacao-principal summary {
-        padding: 8px 8.8px;
-        font-size: 13.6px;
-    }
-
-    main > section:nth-of-type(n + 2) {
-        padding: 16px;
-    }
-
-    th,
-    td {
-        padding: 11.2px;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -1031,5 +1006,151 @@ html.dalt-tritanopia   {
     *::before,
     *::after {
         transition-duration: 0.01ms !important;
+    }
+}
+/* tela de celular */
+@media (max-width: 760px) {
+    body {
+        min-width: 0;
+    }
+
+    header {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 9.6px 24px;
+    }
+
+    header > img[src="../imgs/logo_PCDireitos.jpg"] {
+        grid-row: span 2;
+        width: 80px;
+    }
+
+    .marca-descricao {
+        margin: 0;
+    }
+
+    .navegacao-principal {
+        grid-column: 1 / -1;
+    }
+
+    .navegacao-principal ul {
+        justify-content: center;
+    }
+
+    main > section:first-of-type {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    main > section:first-of-type h1 {
+        font-size: clamp(38px, 10vw, 64px);
+    }
+
+    main > nav ul {
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    main > nav button {
+        padding: 11px 18px;
+        font-size: 15px;
+    }
+
+    main #locais {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 56px 20px;
+    }
+
+    main #locais > header {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+    }
+
+    main #locais > header h2,
+    main #locais > header > p:last-child {
+        grid-column: 1;
+    }
+
+    main #locais > header > p:last-child {
+        grid-row: auto;
+    }
+
+    main aside {
+        position: relative;
+        top: auto;
+        height: min(460px, 70vh);
+        min-height: 320px;
+    }
+
+    main aside > ul {
+        display: none;
+    }
+
+    main #mapa {
+        min-height: 0;
+    }
+
+    main article {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    main article figure {
+        min-height: 220px;
+        aspect-ratio: 16 / 10;
+    }
+
+    main article > div {
+        padding: 24px;
+    }
+
+    main #beneficios ol {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* telas de celulares menores */
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .marca-descricao {
+        font-size: 14px;
+    }
+
+    .navegacao-principal ul {
+        gap: 2.4px;
+    }
+
+    .navegacao-principal a {
+        padding: 8px 8.8px;
+        font-size: 13.6px;
+    }
+
+    main > section:nth-of-type(n + 2) {
+        padding: 16px;
+    }
+
+    main #locais {
+        padding: 40px 16px;
+    }
+
+    main #locais > header h2 {
+        font-size: clamp(34px, 10vw, 44px);
+    }
+
+    main #beneficios ol {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    th,
+    td {
+        padding: 11.2px;
     }
 }

@@ -136,7 +136,7 @@ Solução - Sem esperar pelos demais, Sophia e Camila assumiram e finalizaram to
 
 *************************************************
 
-Data - 20/11/2026 (estimado)
+Data - 20/11/2026
 Decisões - Entrega final de todos os arquivos do projeto, incluindo o site publicado no Railway, README.md, relatório de hospedagem e domínio, diário de bordo, evidências de testes (W3C, teclado, contraste e mobile) e escopo atualizado.
 Aprendizado - Importância de conferir cada item da documentação oficial antes da entrega final e consolidar evidências e documentos em um pacote completo.
 Dificuldades - Não há dificuldades previstas para esta etapa, pois todas as entregas já foram encaminhadas e validadas.

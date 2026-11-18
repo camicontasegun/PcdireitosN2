@@ -18,7 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "teatro-municipal",    nome: "Theatro Municipal",         lat: -23.5453, lng: -46.6389 }
   ];
 
-  const mapa = L.map("mapa");
+  const mapa = L.map("mapa", {
+    scrollWheelZoom: false,
+    dragging: !L.Browser.mobile
+  });
+  mapa.setView([-23.5505, -46.6333], 11);
+
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -33,7 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const enquadrar = () => mapa.fitBounds(pontos, { padding: [30, 30] });
-  enquadrar();
+
+  // recalcula sempre que o container mudar de tamanho
+  const el = document.getElementById("mapa");
+  let iniciado = false;
+  new ResizeObserver(() => {
+    if (!el.clientHeight) return;
+    mapa.invalidateSize();
+    if (!iniciado) { enquadrar(); iniciado = true; }
+  }).observe(el);
 
   document.querySelector('aside[aria-label="Mapa dos locais"] button')
     .addEventListener("click", enquadrar);

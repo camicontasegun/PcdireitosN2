@@ -25,7 +25,7 @@ body {
     background: var(--cor-creme);
     color: var(--cor-azul-marinho);
     font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.65;
 }
 
@@ -50,37 +50,40 @@ summary:focus-visible {
     outline-offset: 3px;
 }
 
-/* Cabeçalho */
+/* ===== Cabeçalho e menu (igual em todas as páginas, modelo: Direitos) ===== */
+
 header {
-    padding: 20px clamp(20px, 3vw, 48px); /*deixar mais perto da lateral*/
-    color: var(--cor-creme);
-    background: var(--cor-azul-marinho);
     display: grid;
+    align-items: center;
     grid-template-columns: auto 1fr;
     column-gap: 24px;
-    align-items: center;
+    padding: 20px clamp(20px, 3vw, 48px);
+    color: var(--cor-creme);
+    background: var(--cor-azul-marinho);
+    line-height: 1.6; /* fixo: o cabeçalho não muda com o body de cada página */
 }
 
-header > img[src="../imgs/logo_PCDireitos.jpg"] {
-    grid-row: span 3;   /* logo ocupa as 3 linhas */
+header > img {
+    grid-row: span 3;   
     width: 140px;
     height: auto;
     border-radius: 12px;
 }
 
 header h1 {
+    flex-basis: 100%;
     margin: 0;
-    font-size: clamp(28px, 4vw, 36px);
+    font-size: clamp(1.75rem, 4vw, 2.25rem); 
     line-height: 1.2;
 }
 
 .marca-descricao {
-    margin: 3.2px auto 3.2px 0;
+    flex-basis: 100%;
+    margin: 0;
     color: var(--cor-verde-claro);
 }
 
 .navegacao-principal {
-    /* coloca os links de navegação em uma linha embaixo*/
     flex-basis: 100%;
 }
 
@@ -95,6 +98,7 @@ header h1 {
 
 .navegacao-principal a,
 .navegacao-principal summary {
+ 
     display: inline-block;
     padding: 7.2px 1.6px;
     color: var(--cor-creme);
@@ -103,10 +107,45 @@ header h1 {
     cursor: pointer;
 }
 
-.navegacao-principal a:hover,
-.navegacao-principal summary:hover {
+.navegacao-principal a:hover {
     color: var(--cor-verde-claro);
 }
+
+.navegacao-principal details ul {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    gap: 2.4px;
+    min-width: 208px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--cor-azul-marinho);
+    box-shadow: var(--sombra-cartao);
+}
+
+.navegacao-principal details {
+    position: relative;
+}
+
+.navegacao-principal a[aria-current="page"] {
+    color: var(--cor-verde-claro);
+    text-decoration: underline;
+    text-underline-offset: 4.8px;
+}
+
+@media (max-width: 420px) { header h1 {
+        font-size: 1.15rem;
+    } .marca-descricao {
+        font-size: 0.8rem;
+    } .navegacao-principal ul {
+        justify-content: center;
+        gap: 2.4px 8px;
+    } .navegacao-principal a {
+        padding: 8px 8.8px;
+        font-size: 0.85rem;
+    } }
+
+
 
 .navegacao-principal a[href="contato.html"] {
     color: var(--cor-verde-claro);
@@ -119,19 +158,6 @@ header h1 {
     color: var(--cor-verde-claro);
     text-decoration: underline;
     text-underline-offset: 4.8px;
-}
-
-.navegacao-principal details ul {
-    /* menu sobreposto ao cabeçalho (links secundários) */
-    position: absolute;
-    z-index: 2;
-    display: grid;
-    gap: 2.4px;
-    min-width: 208px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: var(--cor-azul-marinho);
-    box-shadow: 0 8px 24px rgb(3 25 38 / 18%);
 }
 
 /* Conteúdo centralizado (deixar td bonitinho) */
@@ -160,7 +186,7 @@ main > section:first-child p:first-child {
     pequena chamada acima do título, tipo um destaque a mais*/
     margin: 0 0 8px;
     color: var(--cor-verde-claro);
-    font-size: 14.4px;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 2.24px;
     text-transform: uppercase;
@@ -168,14 +194,14 @@ main > section:first-child p:first-child {
 
 main > section:first-child h1 {
     margin: 0;
-    font-size: clamp(40px, 7vw, 72px);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
     letter-spacing: -0.72px;
     line-height: 1.1;
 }
 
 main > section:first-child p:last-child {
     margin: 14.4px 0 0;
-    font-size: clamp(16.8px, 2vw, 19.2px);
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
 }
 
 main > section:nth-child(2),
@@ -196,7 +222,7 @@ main > section:nth-child(2) {
 main > section h2 {
     margin: 0 0 16px;
     color: var(--cor-azul-marinho);
-    font-size: clamp(25.6px, 3.5vw, 36px);
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
     letter-spacing: -0.48px;
     line-height: 1.2;
 }
@@ -395,183 +421,7 @@ footer p {
     margin: 0;
 }
 
-/* botão de acessibilidade */
-#acesso {
-    position: fixed;
-    z-index: 10;
-    right: 20px;
-    bottom: 20px;
-}
-
-#abrir {
-    width: 56px;
-    height: 56px;
-    border: 2px solid var(--cor-creme);
-    border-radius: 50%;
-    background: var(--cor-azul-petroleo);
-    color: var(--cor-creme);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 700;
-    box-shadow: 0 5px 18px rgb(3 25 38 / 25%);
-}
-
-#painel:not([hidden]) {
-    position: absolute;
-    right: 0;
-    bottom: calc(100% + 12.8px);
-    width: min(90vw, 360px);
-    max-height: min(70vh, 520px);
-    overflow-y: auto;
-    padding: 20px;
-    border: 1px solid var(--cor-verde-claro);
-    border-radius: 16px;
-    background: var(--cor-branco-quente);
-    box-shadow: 0 12px 36px rgb(3 25 38 / 20%);
-}
-
-#painel[hidden] {
-    display: none;
-}
-
-#painel h2 {
-    margin: 0 0 16px;
-}
-
-#painel [role="group"] {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-#painel [role="group"] span {
-    flex-basis: 100%;
-    font-weight: 700;
-}
-
-#painel button {
-    padding: 7.2px 10.4px;
-    border: 1px solid var(--cor-azul-petroleo);
-    border-radius: 8px;
-    background: var(--cor-creme);
-    color: var(--cor-azul-marinho);
-    cursor: pointer;
-    font: inherit;
-}
-
-#painel button:hover {
-    background: var(--cor-verde-claro);
-}
-
-#painel .a11y-reset {
-    margin-top: 16px;
-    background: var(--cor-azul-marinho);
-    color: var(--cor-creme);
-}
-
-/* A partir daqui é  modo de como funciona dentro do painel, deixando ele na lateral e permitindo que tudo funcione */
-#acesso svg {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-/* ===== Efeitos aplicados no <html> pelo JS ===== */
-html.alto-contraste body {
-    background: #000;
-    color: #fff;
-}
-html.alto-contraste header,
-html.alto-contraste footer,
-html.alto-contraste .conceito,
-html.alto-contraste .principio,
-html.alto-contraste .estatistica {
-    background: #000;
-    color: #fff;
-    border: 1px solid #fff;
-}
-html.alto-contraste a,
-html.alto-contraste .estatistica strong,
-html.alto-contraste .principio h3,
-html.alto-contraste .destaque-chamada {
-    color: #ffff00;
-}
-
-html.escala-cinza {
-    filter: grayscale(100%);
-}
-
-html.fonte-legivel body,
-html.fonte-legivel button {
-    font-family: Verdana, Arial, sans-serif;
-    letter-spacing: 0.03em;
-}
-
-html.destacar-links a {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    background: #ffff99;
-    color: #000;
-}
-
-html.espacamento body {
-    line-height: 1.9;
-    letter-spacing: 0.05em;
-    word-spacing: 0.15em;
-}
-
-/* ===== Modos para daltonismo ===== */
-html.dalt-protanopia   { 
-    filter: url(#filtro-protanopia); 
-}
-html.dalt-deuteranopia { 
-    filter: url(#filtro-deuteranopia); 
-}
-html.dalt-tritanopia   { 
-    filter: url(#filtro-tritanopia); 
-}
-
-/* ===== NOVO: leitura em voz alta ===== */
-#painel .grupo-leitura {
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px solid var(--cor-verde-claro);
-}
-
-#painel .grupo-leitura label {
-    flex-basis: 100%;
-}
-
-#painel input[type="range"] {
-    vertical-align: middle;
-    width: 150px;
-}
-
-/* botões ligados (ex.: "Ler ao passar o mouse") ficam destacados */
-#painel button[aria-pressed="true"] {
-    background: var(--cor-azul-petroleo);
-    color: var(--cor-creme);
-}
-
-/* item que está sendo lido agora */
-.lendo-agora {
-    outline: 3px solid #ffbf00 !important;
-    outline-offset: 2px;
-    background: rgb(255 191 0 / 25%) !important;
-    scroll-margin: 120px;
-}
-
 @media (max-width: 760px) {
-    /* em telas menores, centraliza a navegação e deixa os cartões um embaixo do outro */
-    header {
-        gap: 9.6px 16px;
-    }
-
-    .navegacao-principal ul {
-        justify-content: center;
-    }
 
     main > section:last-child ul {
         grid-template-columns: 1fr;
@@ -584,24 +434,6 @@ html.dalt-tritanopia   {
 }
 
 @media (max-width: 420px) {
-    /* Reduz espaçamentos e tamanhos para caber em celulares com as telas menores */
-    header h1 {
-        font-size: 18.4px;
-    }
-
-    .marca-descricao {
-        font-size: 11.52px;
-    }
-
-    .navegacao-principal ul {
-        gap: 2.4px;
-    }
-
-    .navegacao-principal a,
-    .navegacao-principal summary {
-        padding: 8px 6.4px;
-        font-size: 13.6px;
-    }
 
     main > section:nth-child(2),
     main > section:nth-child(3) {

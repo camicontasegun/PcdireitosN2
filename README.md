@@ -20,9 +20,9 @@ Desenvolvimento do site -
     Camila Cavalcante Nakabar (Líder do projeto). 
 
 
-URL repositório:    https://github.com/camicontasegun/PcdireitosN2
+URL repositório:    https://github.com/camicontasegun/PcdireitosN2.git
 
 
-URL site:           https://pcdireitosn2-production.up.railway.app
-
+URL site:           https://pcdireitosn2-production.up.railway.app/html/index.html
+#
 URL site plano B:   https://camila-nak.github.io/Pcdireitos/html/index.html
